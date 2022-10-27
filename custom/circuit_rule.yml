@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: accusation-circuit
+  namespace: mungta
+spec:
+  host: accusation
+  trafficPolicy:
+    connectionPool:
+      tcp:
+        maxConnections: 1	# 연결 가능한 최대 수
+      http:
+        http1MaxPendingRequests: 1	# 요청 보류에 대한 최대 수
+        maxRequestsPerConnection: 1	# 연결 가능한 최대 수
+    outlierDetection:
+      interval: 10s	# 분석 기간
+      consecutive5xxErrors: 2	# 연속 에러 수
+      baseEjectionTime: 3m	# 3분 동안 제외
+      maxEjectionPercent: 100	# 모든 인스턴스 수 제거

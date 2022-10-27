@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: accusation-retry
+  namespace: mungta
+spec:
+  hosts:
+    - accusation
+  http:
+    - route:
+        - destination:
+            host: accusation
+      timeout: 3s
+      retries:
+        attempts: 3
+        perTryTimeout: 2s
+        retryOn: 5xx,retriable-4xx,gateway-error,connect-failure,refused-stream
