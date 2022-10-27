@@ -1,15 +1,15 @@
 ## Istio
 
-- [Service Mesh](# Service-Mesh)
+- [Service Mesh](#Service-Mesh)
 
-- [Istio](# Istio)
-- [Istio 기능](# Istio-기능)
-- [Istio 구조](# Istio-구조)
-- [Istio 환경셋팅](# Istio-환경셋팅)
-- [모니터링 툴 설치](# 모니터링-툴-설치)
-- [Auto Sidecar Injection](# Auto-Sidecar-Injection)
-- [IngressGateway 설정](# IngressGateway-설정)
-- [Circuit Breaker](# Circuit-Breaker)
+- [Istio](#Istio)
+- [Istio 기능](#Istio-기능)
+- [Istio 구조](#Istio-구조)
+- [Istio 환경셋팅](#Istio-환경셋팅)
+- [모니터링 툴 설치](#모니터링-툴-설치)
+- [Auto Sidecar Injection](#Auto-Sidecar-Injection)
+- [IngressGateway 설정](#IngressGateway-설정)
+- [Circuit Breaker](#Circuit-Breaker)
 - [Tutorial 정리](./tutorial/README.md)
 
 
@@ -18,7 +18,7 @@
 
 - 서비스 간의 통신을 제어하고 관리할 수 있도록 하는데 특화된 마이크로 서비스를 위한 계층
 - 실제 서비스 옆에 프록시 서버가 사이드카 패턴 형태로 배치되어 타 서비스와 직접 호출이 아닌 프록시 서버를 통해 호출하는 형태
-- ![service_mesh](./img/service_mesh.png)
+- ![service_mesh](./img/service_mesh.PNG)
 
 
 
@@ -56,7 +56,8 @@
   - subset을 구성하여 요청에 대한 destination을 정의할 수 있음.
 - IngressGateway
   - 서비스 메시로 들어오는 트래픽 처리
-- ![istio_구성도](./img/istio_구성도.png)
+
+![istio_구성도](./img/istio_구성도.png)
 
 
 
@@ -100,28 +101,28 @@
 
 ### 모니터링 툴 설치
 
-```sh
-$ kubectl apply -f istio-1.11.3/samples/addons
-
-$ kubectl get namespace
-NAME              STATUS   AGE
-default           Active   3h6m
-istio-system      Active   5m24s
-kube-node-lease   Active   3h6m
-kube-public       Active   3h6m
-kube-system       Active   3h6m
-
-$ kubectl get svc -n istio-system
-NAME                           TYPE           CLUSTER-IP       EXTERNAL-IP                                                                   PORT(S)                                                                      AGE
-service/grafana                ClusterIP      10.xx.xx.xx     <none>                                                                        3000/TCP                                                                     2m19s
-service/istio-ingressgateway   LoadBalancer   10.xx.xx.xx   xxx.ap-southeast-2.elb.amazonaws.com   15021:31538/TCP,80:31935/TCP,443:30293/TCP,31400:30433/TCP,15443:30098/TCP   5m19s
-service/istiod                 ClusterIP      10.xx.xx.xx    <none>                                                                        15010/TCP,15012/TCP,443/TCP,15014/TCP                                        5m31s
-service/jaeger-collector       ClusterIP      10.xx.xx.xx    <none>                                                                        14268/TCP,14250/TCP,9411/TCP                                                 2m15s
-service/kiali                  ClusterIP      10.xx.xx.xx     <none>                                                                        20001/TCP,9090/TCP                                                           2m12s
-service/prometheus             ClusterIP      10.xx.xx.xx   <none>                                                                        9090/TCP                                                                     2m10s
-service/tracing                ClusterIP      10.xx.xx.xx    <none>                                                                        80/TCP,16685/TCP                                                             2m16s
-service/zipkin                 ClusterIP      10.xx.xx.xx    <none>                                                                        9411/TCP                                                                     2m16s
-```
+- ```sh
+  $ kubectl apply -f istio-1.11.3/samples/addons
+  
+  $ kubectl get namespace
+  NAME              STATUS   AGE
+  default           Active   3h6m
+  istio-system      Active   5m24s
+  kube-node-lease   Active   3h6m
+  kube-public       Active   3h6m
+  kube-system       Active   3h6m
+  
+  $ kubectl get svc -n istio-system
+  NAME                           TYPE           CLUSTER-IP       EXTERNAL-IP                                                                   PORT(S)                                                                      AGE
+  service/grafana                ClusterIP      10.xx.xx.xx     <none>                                                                        3000/TCP                                                                     2m19s
+  service/istio-ingressgateway   LoadBalancer   10.xx.xx.xx   xxx.ap-southeast-2.elb.amazonaws.com   15021:31538/TCP,80:31935/TCP,443:30293/TCP,31400:30433/TCP,15443:30098/TCP   5m19s
+  service/istiod                 ClusterIP      10.xx.xx.xx    <none>                                                                        15010/TCP,15012/TCP,443/TCP,15014/TCP                                        5m31s
+  service/jaeger-collector       ClusterIP      10.xx.xx.xx    <none>                                                                        14268/TCP,14250/TCP,9411/TCP                                                 2m15s
+  service/kiali                  ClusterIP      10.xx.xx.xx     <none>                                                                        20001/TCP,9090/TCP                                                           2m12s
+  service/prometheus             ClusterIP      10.xx.xx.xx   <none>                                                                        9090/TCP                                                                     2m10s
+  service/tracing                ClusterIP      10.xx.xx.xx    <none>                                                                        80/TCP,16685/TCP                                                             2m16s
+  service/zipkin                 ClusterIP      10.xx.xx.xx    <none>                                                                        9411/TCP                                                                     2m16s
+  ```
 
 - 외부에서 접속이 가능하도록 Kiali, Zipkin, Grafana를 LoadBalancer로 변경
 
@@ -227,9 +228,9 @@ service/zipkin                 ClusterIP      10.xx.xx.xx    <none>             
                 number: {{ .Values.istioIngress.front.port }}
   ```
 
-![ingressgateway](./img/ingressgateway.png)
+![ingressgateway](./img/ingressgateway.PNG)
 
-![istio](./img/istio.png)
+![istio](./img/istio.PNG)
 
 
 
