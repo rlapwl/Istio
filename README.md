@@ -49,8 +49,10 @@
   - 서비스들에 대한 엔드포인트 정보는 컨트롤 플레인의 Pilot에 저장되어 있고, Envoy는 이를 참고하여 엔드포인트를 알 수 있다. (Service Discovery)
 - VirtualService
   - 서비스 메시의 라우팅 규칙을 정의함.
+  - Destination weight 스펙을 통해 라우팅되는 비율을 정할 수 있음.
 - DestinationRule
-  - VirtualService에 의해 특정 서비스로 라우팅되는 트래픽에 대한 정책, 규칙을 정의함.
+  - VirtualService에 의해 특정 서비스로 라우팅 발생 이후 트래픽에 대한 정책, 규칙을 정의함.
+  - subset을 구성하여 요청에 대한 destination을 정의할 수 있음.
 - IngressGateway
   - 서비스 메시로 들어오는 트래픽 처리
 - ![istio_구성도](./img/istio_구성도.png)
